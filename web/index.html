@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVision - Agriculture Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top App Bar -->
+        <header class="app-bar">
+            <h1>AgroVision</h1>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content">
+            <!-- Home Screen -->
+            <div class="screen active" id="home-screen">
+                <!-- Weather Card -->
+                <div class="weather-card">
+                    <div class="weather-info">
+                        <div class="weather-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="weather-details">
+                            <h3>Punjab, India</h3>
+                            <p>Sunny</p>
+                        </div>
+                    </div>
+                    <div class="temperature">25°C</div>
+                </div>
+
+                <!-- Welcome Section -->
+                <div class="welcome-section">
+                    <h2>Welcome back, Farmer!</h2>
+                    <p>How can we help you today?</p>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="section">
+                    <h3>Quick Actions</h3>
+                    <div class="action-cards">
+                        <div class="action-card" onclick="showScreen('analyze-crop')">
+                            <i class="fas fa-camera"></i>
+                            <span>Analyze My Crop</span>
+                        </div>
+                        <div class="action-card" onclick="showScreen('yield-predictor')">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Crop Yield Predictor</span>
+                        </div>
+                        <div class="action-card" onclick="showScreen('chatbot')">
+                            <i class="fas fa-comments"></i>
+                            <span>Chatbot</span>
+                        </div>
+                        <div class="action-card" onclick="showScreen('crop-history')">
+                            <i class="fas fa-history"></i>
+                            <span>Crop History</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News & Tips -->
+                <div class="section">
+                    <h3>News & Tips</h3>
+                    <div class="news-cards">
+                        <div class="news-card">
+                            <div class="news-image">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div class="news-content">
+                                <h4>New Pest Management Techniques for Cotton Crops</h4>
+                                <p>Learn about the latest integrated pest management strategies...</p>
+                                <small>1 day ago</small>
+                            </div>
+                        </div>
+                        <div class="news-card">
+                            <div class="news-image">
+                                <i class="fas fa-cloud-rain"></i>
+                            </div>
+                            <div class="news-content">
+                                <h4>Weather Alert: Heavy Rainfall Expected This Week</h4>
+                                <p>Farmers advised to take necessary precautions for their crops...</p>
+                                <small>2 days ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analyze Crop Screen -->
+            <div class="screen" id="analyze-crop">
+                <div class="upload-section">
+                    <div class="upload-card">
+                        <i class="fas fa-camera upload-icon"></i>
+                        <h2>Upload a Photo of Your Crop</h2>
+                        <p>Take a clear photo of your crop for analysis</p>
+                        <div class="upload-buttons">
+                            <button class="btn btn-primary" onclick="uploadImage()">
+                                <i class="fas fa-camera"></i> Take Photo
+                            </button>
+                            <button class="btn btn-secondary" onclick="uploadImage()">
+                                <i class="fas fa-image"></i> Choose from Gallery
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tips-section">
+                    <div class="tips-card">
+                        <h4><i class="fas fa-info-circle"></i> Tips for better analysis:</h4>
+                        <ul>
+                            <li>Ensure good lighting</li>
+                            <li>Keep the camera steady</li>
+                            <li>Focus on the crop leaves and stems</li>
+                            <li>Avoid shadows and reflections</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Choose Analysis Screen -->
+            <div class="screen" id="choose-analysis">
+                <div class="uploaded-image">
+                    <img id="uploaded-img" src="" alt="Uploaded crop image" style="display: none;">
+                    <div class="placeholder-image">
+                        <i class="fas fa-image"></i>
+                        <p>Uploaded Image</p>
+                    </div>
+                </div>
+                <h2>What would you like to do?</h2>
+                <div class="analysis-options">
+                    <button class="analysis-btn primary" onclick="showScreen('crop-analysis-results')">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Analyze My Crop</h3>
+                        <p>Get detailed analysis of soil health, weather conditions, and yield predictions</p>
+                    </button>
+                    <button class="analysis-btn secondary" onclick="showScreen('disease-diagnosis')">
+                        <i class="fas fa-stethoscope"></i>
+                        <h3>Diagnose Diseases in My Crop</h3>
+                        <p>Identify potential diseases and get treatment recommendations</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Crop Analysis Results Screen -->
+            <div class="screen" id="crop-analysis-results">
+                <div class="location-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Location detected from image</h4>
+                        <p>Punjab, India</p>
+                    </div>
+                </div>
+
+                <div class="weather-section">
+                    <h3>Current Weather</h3>
+                    <div class="weather-grid">
+                        <div class="weather-item">
+                            <span>Temperature</span>
+                            <strong>18°C - 32°C</strong>
+                        </div>
+                        <div class="weather-item">
+                            <span>Humidity</span>
+                            <strong>65%</strong>
+                        </div>
+                        <div class="weather-item">
+                            <span>Pressure</span>
+                            <strong>1013.25 mb</strong>
+                        </div>
+                        <div class="weather-item">
+                            <span>Wind</span>
+                            <strong>12 km/h</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="forecast-section">
+                    <h3>3-Day Forecast</h3>
+                    <div class="forecast-cards">
+                        <div class="forecast-card">
+                            <div>Today</div>
+                            <i class="fas fa-sun"></i>
+                            <div>25°C</div>
+                        </div>
+                        <div class="forecast-card">
+                            <div>Tomorrow</div>
+                            <i class="fas fa-cloud"></i>
+                            <div>28°C</div>
+                        </div>
+                        <div class="forecast-card">
+                            <div>Thu</div>
+                            <i class="fas fa-cloud-rain"></i>
+                            <div>22°C</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-cards">
+                    <div class="data-card">
+                        <i class="fas fa-tint"></i>
+                        <h4>Soil Moisture</h4>
+                        <div class="value">68%</div>
+                    </div>
+                    <div class="data-card">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h4>Evapotranspiration</h4>
+                        <div class="value">4.2 mm/day</div>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <h3>Soil Health Chart</h3>
+                    <div class="chart-placeholder">
+                        <canvas id="soilChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disease Diagnosis Screen -->
+            <div class="screen" id="disease-diagnosis">
+                <div class="uploaded-image">
+                    <div class="placeholder-image">
+                        <i class="fas fa-image"></i>
+                        <p>Crop Image</p>
+                    </div>
+                </div>
+
+                <div class="analysis-status">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Analysis Complete</span>
+                </div>
+
+                <div class="disease-result">
+                    <div class="disease-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Probable Disease Detected</h3>
+                    </div>
+                    
+                    <div class="disease-name">
+                        <h4>Disease Name:</h4>
+                        <p><strong>Late Blight (Phytophthora infestans)</strong></p>
+                    </div>
+
+                    <div class="symptoms">
+                        <h4>Key Symptoms:</h4>
+                        <ul>
+                            <li>Dark, water-soaked lesions on leaves</li>
+                            <li>White, fuzzy growth on leaf undersides</li>
+                            <li>Rapid spread during humid conditions</li>
+                            <li>Brown to black spots on stems and fruits</li>
+                        </ul>
+                    </div>
+
+                    <div class="treatment">
+                        <h4>Suggested Treatment:</h4>
+                        <ul>
+                            <li>Apply copper-based fungicides immediately</li>
+                            <li>Remove and destroy infected plant parts</li>
+                            <li>Improve air circulation around plants</li>
+                            <li>Avoid overhead watering</li>
+                            <li>Apply preventive sprays weekly during humid weather</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-save"></i> Save to History
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-share"></i> Share Report
+                    </button>
+                </div>
+            </div>
+
+            <!-- Yield Predictor Screen -->
+            <div class="screen" id="yield-predictor">
+                <div class="info-card">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <h3>Yield Prediction</h3>
+                        <p>Select your state and crop to view historical yield data and future predictions.</p>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <label for="state-select">Select State:</label>
+                    <select id="state-select" onchange="updateCrops()">
+                        <option value="">Choose your state</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Haryana">Haryana</option>
+                    </select>
+
+                    <label for="crop-select">Select Crop:</label>
+                    <select id="crop-select">
+                        <option value="">Select state first</option>
+                    </select>
+
+                    <button class="btn btn-primary" onclick="showYieldDetails()">View Details</button>
+                </div>
+
+                <div class="selected-info" id="selected-info" style="display: none;">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="selected-state">Selected Region: </span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-seedling"></i>
+                        <span id="selected-crop">Selected Crop: </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yield Details Screen -->
+            <div class="screen" id="yield-details">
+                <div class="crop-info-card">
+                    <div class="crop-image">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h2 id="crop-name">Wheat</h2>
+                    <div class="crop-details">
+                        <div class="detail-item">
+                            <span>State</span>
+                            <strong id="crop-state">Punjab</strong>
+                        </div>
+                        <div class="detail-item">
+                            <span>Season</span>
+                            <strong>Rabi</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Average Yield</h4>
+                        <div class="stat-value">3.2 tonnes/hectare</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-rupee-sign"></i>
+                        <h4>Market Price</h4>
+                        <div class="stat-value">₹2200/quintal</div>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <h3>Crop Yield Prediction (Last 10 Years + Next 5 Years)</h3>
+                    <div class="chart-placeholder">
+                        <canvas id="yieldChart" width="400" height="250"></canvas>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <div class="legend-color historical"></div>
+                            <span>Historical Data</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color predicted"></div>
+                            <span>Predicted Data</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chatbot Screen -->
+            <div class="screen" id="chatbot">
+                <div class="chat-header">
+                    <div class="bot-avatar">🤖</div>
+                    <div>
+                        <h3>AgroBot</h3>
+                        <p>Ask Me Anything</p>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message bot-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            Hello! I'm AgroBot, your agricultural assistant. How can I help you today?
+                        </div>
+                    </div>
+                    <div class="message bot-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            I can help you with crop diseases, soil health, weather patterns, and farming best practices.
+                        </div>
+                    </div>
+                    <div class="message bot-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            Feel free to ask me anything about your crops!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input">
+                    <input type="text" id="chat-input-field" placeholder="Ask about your crop, soil, pests..." onkeypress="handleChatInput(event)">
+                    <button onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Crop History Screen -->
+            <div class="screen" id="crop-history">
+                <div class="history-cards">
+                    <div class="history-card">
+                        <div class="history-header">
+                            <div class="crop-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div class="crop-info">
+                                <h4>Wheat</h4>
+                                <p>2 days ago</p>
+                            </div>
+                            <div class="analysis-type disease">Disease</div>
+                        </div>
+                        <div class="result-summary">
+                            <h5>Analysis Result:</h5>
+                            <p>Healthy crop, minor pest risk detected</p>
+                        </div>
+                        <div class="history-actions">
+                            <button class="btn btn-primary btn-sm">View Report</button>
+                            <button class="btn btn-secondary btn-sm">Share</button>
+                        </div>
+                    </div>
+
+                    <div class="history-card">
+                        <div class="history-header">
+                            <div class="crop-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div class="crop-info">
+                                <h4>Rice</h4>
+                                <p>5 days ago</p>
+                            </div>
+                            <div class="analysis-type soil">Soil Health</div>
+                        </div>
+                        <div class="result-summary">
+                            <h5>Analysis Result:</h5>
+                            <p>Good soil condition, pH level optimal</p>
+                        </div>
+                        <div class="history-actions">
+                            <button class="btn btn-primary btn-sm">View Report</button>
+                            <button class="btn btn-secondary btn-sm">Share</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Help Screen -->
+            <div class="screen" id="help">
+                <div class="help-header">
+                    <i class="fas fa-question-circle"></i>
+                    <div>
+                        <h2>How can we help you?</h2>
+                        <p>Find answers to your questions or get in touch with our support team.</p>
+                    </div>
+                </div>
+
+                <div class="help-options">
+                    <div class="help-option" onclick="showAboutUs()">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <h4>About Us</h4>
+                            <p>Learn more about AgroVision and our mission</p>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="help-option" onclick="showReportIssue()">
+                        <i class="fas fa-bug"></i>
+                        <div>
+                            <h4>Report an Issue</h4>
+                            <p>Found a problem? Let us know so we can fix it</p>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="help-option" onclick="showTerms()">
+                        <i class="fas fa-file-contract"></i>
+                        <div>
+                            <h4>Terms and Conditions</h4>
+                            <p>Read our terms of service and privacy policy</p>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h3>Frequently Asked Questions</h3>
+                    <div class="faq-item">
+                        <h4>How accurate is the crop disease diagnosis?</h4>
+                        <p>Our AI-powered diagnosis system has an accuracy rate of over 90% for common crop diseases.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Can I use the app offline?</h4>
+                        <p>Some features like crop history and saved reports can be accessed offline.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Screen -->
+            <div class="screen" id="profile">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h2>Farmer Singh</h2>
+                    <p><i class="fas fa-map-marker-alt"></i> Punjab, India</p>
+                    <small>Member since June 2024</small>
+                </div>
+
+                <div class="profile-options">
+                    <div class="profile-option">
+                        <i class="fas fa-user-circle"></i>
+                        <div>
+                            <h4>My Account</h4>
+                            <p>Edit profile and account settings</p>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="profile-option">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <h4>Privacy Policy</h4>
+                            <p>View our privacy policy and data usage</p>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="profile-option">
+                        <i class="fas fa-star"></i>
+                        <div>
+                            <h4>Rate Us</h4>
+                            <p>Help us improve by rating the app</p>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <button class="btn btn-danger logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" onclick="showScreen('home-screen')">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </button>
+            <button class="nav-item" onclick="showScreen('help')">
+                <i class="fas fa-question-circle"></i>
+                <span>Help</span>
+            </button>
+            <button class="nav-item" onclick="showScreen('profile')">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
