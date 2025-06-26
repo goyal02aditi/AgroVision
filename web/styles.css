@@ -30,12 +30,41 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .app-bar h1 {
     font-size: 24px;
     font-weight: 700;
     margin: 0;
+    flex: 1;
+}
+
+.back-btn {
+    position: absolute;
+    left: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.back-btn i {
+    font-size: 18px;
 }
 
 /* Main Content */

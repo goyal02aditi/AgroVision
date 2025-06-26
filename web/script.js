@@ -1,7 +1,22 @@
 // AgroVision JavaScript Functions
 
+// Navigation History
+let navigationHistory = ['home-screen'];
+
 // Screen Navigation
 function showScreen(screenId) {
+    // Get current screen
+    const currentScreen = document.querySelector('.screen.active');
+    const currentScreenId = currentScreen ? currentScreen.id : 'home-screen';
+    
+    // Add current screen to history if not already there
+    if (navigationHistory[navigationHistory.length - 1] !== currentScreenId) {
+        navigationHistory.push(currentScreenId);
+    }
+    
+    // Add new screen to history
+    navigationHistory.push(screenId);
+    
     // Hide all screens
     const screens = document.querySelectorAll('.screen');
     screens.forEach(screen => screen.classList.remove('active'));
@@ -15,8 +30,59 @@ function showScreen(screenId) {
     // Update navigation
     updateNavigation(screenId);
     
+    // Update back button visibility
+    updateBackButton(screenId);
+    
     // Initialize screen-specific features
     initializeScreen(screenId);
+}
+
+// Go Back Function
+function goBack() {
+    if (navigationHistory.length > 1) {
+        // Remove current screen from history
+        navigationHistory.pop();
+        
+        // Get previous screen
+        const previousScreen = navigationHistory[navigationHistory.length - 1];
+        
+        // Navigate to previous screen without adding to history
+        navigateToScreen(previousScreen);
+    }
+}
+
+// Navigate without adding to history
+function navigateToScreen(screenId) {
+    // Hide all screens
+    const screens = document.querySelectorAll('.screen');
+    screens.forEach(screen => screen.classList.remove('active'));
+    
+    // Show target screen
+    const targetScreen = document.getElementById(screenId);
+    if (targetScreen) {
+        targetScreen.classList.add('active');
+    }
+    
+    // Update navigation
+    updateNavigation(screenId);
+    
+    // Update back button visibility
+    updateBackButton(screenId);
+    
+    // Initialize screen-specific features
+    initializeScreen(screenId);
+}
+
+// Update Back Button Visibility
+function updateBackButton(screenId) {
+    const backBtn = document.getElementById('back-btn');
+    const mainScreens = ['home-screen', 'help', 'profile'];
+    
+    if (mainScreens.includes(screenId) || navigationHistory.length <= 1) {
+        backBtn.style.display = 'none';
+    } else {
+        backBtn.style.display = 'flex';
+    }
 }
 
 // Update Bottom Navigation
@@ -383,6 +449,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (currentScreen) {
         initializeScreen(currentScreen.id);
     }
+    
+    // Initialize back button state
+    updateBackButton('home-screen');
 });
 
 // Weather Data Update (simulated)
