@@ -32,7 +32,8 @@ The application is built as a cross-platform mobile app targeting both Android a
 - **YieldDetailsScreen**: Historical yield data and predictions with charts
 
 #### Supporting Screens
-- **CropHistoryScreen**: Historical analysis records
+- **CropHistoryScreen**: Historical analysis records with view report functionality
+- **AnalysisReportScreen**: Detailed past analysis reports with comprehensive data
 - **AboutUsScreen**: App information and company details
 - **ReportIssueScreen**: Bug reporting and feedback form
 - **TermsConditionsScreen**: Legal information and terms

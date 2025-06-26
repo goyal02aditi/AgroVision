@@ -1222,6 +1222,390 @@ select:focus, input[type="text"]:focus {
     width: 20px;
 }
 
+/* Analysis Report Styles */
+.report-header {
+    background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.report-title h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1976D2;
+    margin-bottom: 8px;
+}
+
+.report-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.report-meta span {
+    font-size: 14px;
+    color: #1565C0;
+}
+
+.report-id {
+    font-weight: 600;
+}
+
+.report-status {
+    background: #E8F5E8;
+    color: #2E7D32;
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.report-status i {
+    color: #4CAF50;
+}
+
+.report-content {
+    margin-bottom: 24px;
+}
+
+.report-section {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.report-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.report-section h3 i {
+    color: #4CAF50;
+    font-size: 20px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-item label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    margin: 0;
+}
+
+.info-item span {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.analysis-result-card {
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.result-header {
+    background: #f8f9fa;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.result-icon {
+    width: 40px;
+    height: 40px;
+    background: #FFF3E0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-icon i {
+    color: #FF9800;
+    font-size: 18px;
+}
+
+.result-info {
+    flex: 1;
+}
+
+.result-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.result-info p {
+    font-size: 14px;
+    color: #666;
+}
+
+.severity-badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: #FFF3E0;
+    color: #F57C00;
+}
+
+.result-details {
+    padding: 16px;
+    background: white;
+}
+
+.result-details p {
+    color: #333;
+    line-height: 1.5;
+}
+
+.weather-report-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.weather-report-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.weather-report-item i {
+    color: #4CAF50;
+    font-size: 20px;
+}
+
+.weather-report-item label {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.weather-report-item span {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.recommendations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.recommendation-item {
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 16px;
+    background: white;
+}
+
+.recommendation-item.priority-high {
+    border-left: 4px solid #f44336;
+}
+
+.recommendation-item.priority-medium {
+    border-left: 4px solid #ff9800;
+}
+
+.recommendation-item.priority-low {
+    border-left: 4px solid #4caf50;
+}
+
+.recommendation-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.recommendation-header i {
+    font-size: 16px;
+}
+
+.priority-high .recommendation-header i {
+    color: #f44336;
+}
+
+.priority-medium .recommendation-header i {
+    color: #ff9800;
+}
+
+.priority-low .recommendation-header i {
+    color: #4caf50;
+}
+
+.priority-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.priority-high .priority-label {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.priority-medium .priority-label {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.priority-low .priority-label {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.recommendation-item h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.recommendation-item p {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.recommendation-timeline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+.recommendation-timeline i {
+    color: #999;
+}
+
+.soil-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.soil-metric {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+}
+
+.metric-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #666;
+    font-weight: 600;
+}
+
+.metric-header i {
+    color: #4CAF50;
+}
+
+.metric-value {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.metric-value.good {
+    color: #4CAF50;
+}
+
+.metric-value.warning {
+    color: #FF9800;
+}
+
+.metric-value.danger {
+    color: #f44336;
+}
+
+.metric-status {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.soil-metric .metric-status {
+    background: #E8F5E8;
+    color: #2E7D32;
+}
+
+.notes-content {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 16px;
+    border-left: 4px solid #4CAF50;
+}
+
+.notes-content p {
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.notes-content p:last-child {
+    margin-bottom: 0;
+}
+
+.report-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.report-actions .btn {
+    flex: 1;
+    min-width: 120px;
+}
+
 /* Responsive Design */
 @media (max-width: 414px) {
     .app-container {
@@ -1251,5 +1635,22 @@ select:focus, input[type="text"]:focus {
     
     .action-buttons {
         flex-direction: column;
+    }
+    
+    .info-grid, .weather-report-grid, .soil-metrics {
+        grid-template-columns: 1fr;
+    }
+    
+    .report-header {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .report-actions {
+        flex-direction: column;
+    }
+    
+    .report-actions .btn {
+        min-width: auto;
     }
 }

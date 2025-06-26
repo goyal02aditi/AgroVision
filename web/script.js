@@ -417,6 +417,95 @@ function drawYieldChart() {
     });
 }
 
+// Analysis Report Functions
+function viewAnalysisReport(reportId) {
+    // Load report data based on ID
+    loadReportData(reportId);
+    
+    // Navigate to analysis report screen
+    showScreen('analysis-report');
+}
+
+function loadReportData(reportId) {
+    // Sample report data - in a real app, this would come from a database
+    const reportData = {
+        'wheat-disease-001': {
+            title: 'Wheat Disease Analysis Report',
+            date: 'June 24, 2025',
+            id: 'WH-001',
+            cropType: 'Wheat',
+            location: 'Punjab, India',
+            growthStage: 'Flowering',
+            fieldSize: '2.5 acres',
+            resultTitle: 'Minor Pest Risk Detected',
+            resultConfidence: 'Confidence: 87%',
+            severity: 'Low Risk',
+            resultDetails: 'Analysis indicates early signs of aphid presence on wheat leaves. Current infestation level is low but requires monitoring to prevent spread.',
+            temperature: '18°C - 32°C',
+            humidity: '65%',
+            visibility: '10 km',
+            wind: '12 km/h'
+        },
+        'rice-soil-002': {
+            title: 'Rice Soil Health Analysis Report',
+            date: 'June 21, 2025',
+            id: 'RC-002',
+            cropType: 'Rice',
+            location: 'Punjab, India',
+            growthStage: 'Vegetative',
+            fieldSize: '3.2 acres',
+            resultTitle: 'Good Soil Condition',
+            resultConfidence: 'Confidence: 92%',
+            severity: 'Optimal',
+            resultDetails: 'Soil analysis shows excellent pH balance and good nutrient levels. Nitrogen and potassium levels are within optimal ranges for rice cultivation.',
+            temperature: '22°C - 35°C',
+            humidity: '72%',
+            visibility: '8 km',
+            wind: '8 km/h'
+        }
+    };
+    
+    const data = reportData[reportId] || reportData['wheat-disease-001'];
+    
+    // Update report content
+    document.getElementById('report-title').textContent = data.title;
+    document.getElementById('report-date').textContent = data.date;
+    document.getElementById('report-id').textContent = data.id;
+    document.getElementById('report-crop-type').textContent = data.cropType;
+    document.getElementById('report-location').textContent = data.location;
+    document.getElementById('report-growth-stage').textContent = data.growthStage;
+    document.getElementById('report-field-size').textContent = data.fieldSize;
+    document.getElementById('result-title').textContent = data.resultTitle;
+    document.getElementById('result-confidence').textContent = data.resultConfidence;
+    document.getElementById('severity-badge').innerHTML = `<span>${data.severity}</span>`;
+    document.getElementById('result-details').innerHTML = `<p>${data.resultDetails}</p>`;
+    document.getElementById('report-temperature').textContent = data.temperature;
+    document.getElementById('report-humidity').textContent = data.humidity;
+    document.getElementById('report-visibility').textContent = data.visibility;
+    document.getElementById('report-wind').textContent = data.wind;
+    
+    // Update severity badge color based on severity
+    const severityBadge = document.getElementById('severity-badge');
+    const resultIcon = document.querySelector('.result-icon i');
+    
+    if (data.severity === 'Low Risk' || data.severity === 'Optimal') {
+        severityBadge.style.background = '#E8F5E8';
+        severityBadge.style.color = '#2E7D32';
+        resultIcon.className = 'fas fa-check-circle';
+        resultIcon.style.color = '#4CAF50';
+    } else if (data.severity === 'Medium Risk') {
+        severityBadge.style.background = '#FFF3E0';
+        severityBadge.style.color = '#F57C00';
+        resultIcon.className = 'fas fa-exclamation-triangle';
+        resultIcon.style.color = '#FF9800';
+    } else {
+        severityBadge.style.background = '#FFEBEE';
+        severityBadge.style.color = '#C62828';
+        resultIcon.className = 'fas fa-exclamation-circle';
+        resultIcon.style.color = '#F44336';
+    }
+}
+
 // Help Screen Functions
 function showAboutUs() {
     alert('AgroVision is a comprehensive agriculture assistant app designed to help farmers improve their crop yields through AI-powered analysis and expert guidance.');
