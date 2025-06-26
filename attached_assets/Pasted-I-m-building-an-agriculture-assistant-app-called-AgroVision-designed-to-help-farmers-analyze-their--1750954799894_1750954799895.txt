@@ -1,0 +1,46 @@
+I’m building an agriculture assistant app called AgroVision, designed to help farmers analyze their crops, predict yields, diagnose plant diseases, get real-time weather and soil insights, view crop history, and chat with an AI-powered assistant. The app also provides access to useful tips and support resources through a clean, rural-friendly UI. Please generate Flutter UI code only (no backend logic) for the following screens and layout:
+
+HOME SCREEN Top AppBar titled “AgroVision” with a green theme. Top card showing location, weather icon, temperature. Welcome section with greeting text and user's name. Horizontal scrollable cards(in square shape each) for:
+“Analyze My Crop” “crop yield predictor” “chatbot” "crop history"
+
+A News & Tips section below with vertical list-style cards (image + title + short description). Theme: Light green and earthy tones, farmer-friendly layout. Bottom navigation bar with 3 tabs: Home, help, Profile (icons accordingly).
+
+Analyze my crop screen (user reaches here by clicking "Analyze My Crop" on home page) Step 1: screen Upload a photo of your crop for users. After uploading, navigate to “Choose Analysis” screen with 2 option Display uploaded image at top. Two large buttons:
+“Analyze My Crop”
+
+“Diagnose Diseases in My Crop”
+
+Step 2A: Crop Analysis Screen (User lands here after clicking "Analyze My Crop") Auto-fetch location from uploaded image metadata (just describe in UI). Display: Weather: Temp (min/max), humidity, pressure, wind, clouds, precipitation. Below: a 3-day forecast in horizontal scroll view (icons + day/date). Clean and minimalist card-based layout. Additional data cards: Soil Moisture, Evapotranspiration, Flux.
+
+Two charts: Soil Health (line chart or bar graph) Yield Comparison (e.g., current vs. expected)
+
+Use placeholder charts and mock text. Neatly structured with padding, scrollable if needed.
+
+Step 2B: Disease Diagnosis Screen Show uploaded crop image. Display result card with: Probable disease name Key symptoms Suggested solutions/treatment Use placeholder text and images.
+
+CROP YIELD PREDICTOR SCREEN (user reaches here by clicking "crop yield predictor" on home page) show a list as drop down menu to select indian state from. once selected, give another drop down to select name of the crop for user to select. and at bottom give a button "view details."
+this takes user to next details page step 3A: user is taken to view details page that has crop image of selected crop, crop name, and a bar chart showing crop yield over last 10 years along with prediction of next 5 years. (Use placeholder charts and mock text. basically dummy data for ui)
+
+CHATBOT SCREEN (User lands here after clicking "chatbot" on home page) AppBar with title: “AgroBot – Ask Me Anything”
+Chat interface layout: Message bubbles: user on right, bot on left. Scrollable chat area. Bottom input bar with: Text input field (hint: “Ask about your crop, soil, pests…”) Send button (icon)
+
+Show 2–3 sample messages at top as placeholders.
+
+Style: Light green and earthy theme, readable font, subtle borders. Optionally, add a small animated robot avatar at the top left for charm 🤖🌱
+
+CROP HISTORY SCREEN (User lands here after clicking "crop history" on home page) AppBar: “My Crop History” Scrollable list of cards:
+Each card shows: Crop Name Date analyzed Type of analysis done (Soil / Disease / Both) Result summary (e.g. “Healthy Soil, Risk of Blight”) “View Report” button Light border, rounded cards, earthy theme
+
+Use dummy data for now
+
+HELP SCREEN (Bottom Nav Tab: “Help”) (User lands here after clicking "Help" icon on navigation bar) AppBar: “Help & Support”
+Buttons: about us Report an Issue terms and condition
+
+Each button leads to its respective screen Farmer-friendly clean layout
+
+PROFILE SCREEN ((User lands here after clicking "Profile" icon on navigation bar)) User avatar, name, and location at top.
+Buttons for: “my account” “privacy policy” “rate us” Logout button at the bottom.
+
+Simple, accessible layout.
+
+Notes for AI: Generate UI-only Flutter code, no backend logic. Use dummy placeholders for images and data. Focus on clean layout, intuitive user flow, and reusable components. Use padding, spacing, rounded cards for a modern rural-friendly design.
