@@ -9,6 +9,7 @@ import 'analyze_crop_screen.dart';
 import 'crop_yield_predictor_screen.dart';
 import 'chatbot_screen.dart';
 import 'crop_history_screen.dart';
+import '../widgets/OnlineStatusIndicator.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -55,6 +56,12 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('AgroVision'),
         backgroundColor: AppTheme.primaryGreen,
+          actions: const [
+      Padding(
+      padding: EdgeInsets.only(right: 16.0),
+      child: Center(child: OnlineStatusIndicator()),
+    ),
+  ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
