@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'theme/app_theme.dart';
 import 'widgets/bottom_navigation.dart';
-
+import 'screens/SplashScreen.dart';
 void main() {
   runApp(const AgroVisionApp());
 }
@@ -15,7 +15,7 @@ class AgroVisionApp extends StatelessWidget {
     return MaterialApp(
       title: 'AgroVision',
       theme: AppTheme.lightTheme,
-      home: const MainScreen(),
+      home: const SplashScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
