@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset('assets/images/wheat4.jpg', fit: BoxFit.cover),
+          Image.asset('assets/wheat4.jpg', fit: BoxFit.cover),
           Center(
             child: Text(
               'KRISHI',

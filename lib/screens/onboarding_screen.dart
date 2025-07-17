@@ -17,15 +17,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   final List<Map<String, String>> onboardingData = [
     {
-      'image': 'assets/images/onboard1.jpg',
+      'image': 'assets/onboard1.jpg',
       'text': 'Identify plant diseases with a single click.',
     },
     {
-      'image': 'assets/images/onboard2.jpg',
+      'image': 'assets/onboard2.jpg',
       'text': 'Get actionable farming tips and guidance.',
     },
     {
-      'image': 'assets/images/onboard3.jpg',
+      'image': 'assets/onboard3.jpg',
       'text': 'Let us revolutionize farming with tech!',
     },
   ];
